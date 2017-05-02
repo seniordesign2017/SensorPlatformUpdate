@@ -6,6 +6,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.js"></script>
         <script src="script.js"></script>
+		<script src="script2.js"></script>
+		<script src="script3.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet">
 	</head>
 	<body>
@@ -33,10 +35,14 @@
 								<td><p>Sensor: </p></td>
 								<td>
 									<select id="graphPick" autocomplete="off">
-										<option value="all">all sensors</option>
-										<option selected value="temperature" selected>Temperature</option>
+										<option selected value="all">all sensors</option>
+										<option value="temperature">Temperature</option>
 										<option value="flow">Flow</option>
 										<option value="pressure">Pressure</option>
+										<option value="pressure2">Pressure2</option>
+										<option value="atmoPressure">Pressure</option>
+										<option value="humidity">Humidity</option>
+										<option value="current">Current</option>
 									</select>
 								</td>
 							<tr>
@@ -65,14 +71,22 @@
 		<div class="valueContainer">
 			<table style="border:1px solid white;border-spacing:0px;">
 				<tr>
-					<th>Temperature</th>
-					<th>Flow</th>
-					<th>Pressure</th>
+					<th>Pump </br> Temperature(F)</th>
+					<th>Flow</br>GPM</th>
+					<th>Pressure</br>PSI</th>
+					<th>Pressure2</br>PSI</th>
+					<th>Humidity</br>%</th>
+					<th>Current</br>Amps</th>
+					<th>Atmospheric </br> Pressure (PA)</th>
 				</tr>
 				<tr>
 					<td id="currTemp">N/A</td>
 					<td id="currFlow">N/A</td>
 					<td id="currPres">N/A</td>
+					<td id="currPres2">N/A</td>
+					<td id="currHumid">N/A</td>
+					<td id="currCurr">N/A</td>
+					<td id="currApres">N/A</td>
 				</tr>
 			</table>
 		</div>

@@ -1,17 +1,17 @@
 $(function() {
-	if($("#sleeperDiv3").text.length != 0){
+	if($("#sleeperDiv2").text.length != 0){
 		function fetchData() {
 			
 			console.log('fetching data from Murano');
-			$("#appconsole3").text('Fetching Data For '+myDevice+' From Server...');
-			$("#appconsole3").css('color', '#555555');
+			$("#appconsole2").text('Fetching Data For '+myDevice+' From Server...');
+			$("#appconsole2").css('color', '#555555');
 
 			// recent data is grabbed as newdata
 			function onDataReceived(newdata) {
-				$("#appstatus3").text('Running');
-				$("#appstatus3").css('color', '555555');
-				$("#appconsole3").text('Processing Data');
-				$("#appconsole3").css('color', '#555555');
+				$("#appstatus2").text('Running');
+				$("#appstatus2").css('color', '555555');
+				$("#appconsole2").text('Processing Data');
+				$("#appconsole2").css('color', '#555555');
 				var data_to_plot = [];
 				//Load all the data in one pass; if we only got partial
 				// data we could merge it with what we already have.
@@ -23,8 +23,8 @@ $(function() {
 				//newdata has no data
 				//Database error
 				console.log('no data in selected window, check device')
-				$("#appconsole3").text('No data found in window for this device');
-				$("#placeholder3").text('Graph: Data Not Found for: '+myDevice);
+				$("#appconsole2").text('No data found in window for this device');
+				$("#placeholder2").text('Graph: Data Not Found for: '+myDevice);
 				}else{
 					//newdata has data
 					console.log('valid data return for: '+myDevice);
@@ -78,7 +78,7 @@ $(function() {
 						}
 						
 						// only push if data returned
-						if(graphType3 == "all"||(graphType3=="temper" && friendly == "Pump Temperature")||(graphType3=="press" && friendly == "Pressure")||(graphType3 == "flow"&& friendly == "Flow")(graphType3=="press3" && friendly == "Pressure3")||(graphType3=="bpress" && friendly == "Barometric Pressure")||(graphType3=="curr" && friendly == "Current")||(graphType3=="humid" && friendly == "Humidity")){
+						if(graphType2 == "all"||(graphType2=="temper" && friendly == "Pump Temperature")||(graphType2=="press" && friendly == "Pressure")||(graphType2 == "flow"&& friendly == "Flow")(graphType2=="press2" && friendly == "Pressure2")||(graphType2=="bpress" && friendly == "Barometric Pressure")||(graphType2=="curr" && friendly == "Current")||(graphType2=="humid" && friendly == "Humidity")){
 							
 							if (data.length > 0) {
 								last_val = data[data.length-1];
@@ -94,10 +94,10 @@ $(function() {
 							}
 						}
 					}
-					$("#placeholder3").text('');
-					$.plot("#placeholder3", data_to_plot, graph_options);
-					$("#appconsole3").text('Data Plotted');
-					$("#appconsole3").css('color', '#555555');
+					$("#placeholder2").text('');
+					$.plot("#placeholder2", data_to_plot, graph_options);
+					$("#appconsole2").text('Data Plotted');
+					$("#appconsole2").css('color', '#555555');
 				
 				}
 				
@@ -108,9 +108,9 @@ $(function() {
 
 			function onError( jqXHR, textStatus, errorThrown) {
 				console.log('error: ' + textStatus + ',' + errorThrown);
-				$("#appconsole3").text('No Server Response');
-				$("#appstatus3").text('Server Offline');
-				$("#appstatus3").css('color', red_color);
+				$("#appconsole2").text('No Server Response');
+				$("#appstatus2").text('Server Offline');
+				$("#appstatus2").css('color', red_color);
 				if (updateInterval != 0){
 					setTimeout(fetchData, updateInterval+3000);
 				}
@@ -126,8 +126,8 @@ $(function() {
 				statusCode: {
 					504: function() {
 						console.log( "server not responding" );
-						$("#appstatus3").text('Server Not Responding 504');
-						$("#appstatus3").css('color', red_color);
+						$("#appstatus2").text('Server Not Responding 504');
+						$("#appstatus2").css('color', red_color);
 					}
 				}
 				,timeout: 10000
