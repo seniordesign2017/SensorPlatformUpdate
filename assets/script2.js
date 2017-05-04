@@ -1,7 +1,7 @@
 $(function() {
 	if($("#sleeperDiv2").text.length != 0){
 		//REPLACE DEVICE UNIQUE IDENTIFIER / SERIAL NUMBER HERE
-		var myDevice = 'B4:21:8A:F0:70:91';//var myDevice = 'B4:21:8A:F0:2E:CE'; //default unique device identifier  B4:21:8A:F0:36:58
+		var myDevice2 = 'B4:21:8A:F0:70:91';//var myDevice2 = 'B4:21:8A:F0:2E:CE'; //default unique device identifier  B4:21:8A:F0:36:58
 		//REPLACE WITH FULL APP DOMAIN IF RUNNING LOCALLY, OTHEWISE LEAVE AS "/"
 		var app_domain = '/';
 		var data = [];
@@ -46,7 +46,7 @@ $(function() {
 		function fetchData() {
 			
 			console.log('fetching data from Murano');
-			$("#appconsole2").text('Fetching Data For '+myDevice+' From Server...');
+			$("#appconsole2").text('Fetching Data For '+myDevice2+' From Server...');
 			$("#appconsole2").css('color', '#555555');
 
 			// recent data is grabbed as newdata
@@ -67,10 +67,10 @@ $(function() {
 				//Database error
 				console.log('no data in selected window, check device')
 				$("#appconsole2").text('No data found in window for this device');
-				$("#placeholder2").text('Graph: Data Not Found for: '+myDevice);
+				$("#placeholder2").text('Graph: Data Not Found for: '+myDevice2);
 				}else{
 					//newdata has data
-					console.log('valid data return for: '+myDevice);
+					console.log('valid data return for: '+myDevice2);
 					//for each column in the newdata from timeseries 
 					
 					for (j = 1; j < newdata.timeseries.columns.length; j++){
@@ -160,7 +160,7 @@ $(function() {
 			}
 
 			$.ajax({
-				url: app_domain+"development/device/data?identifier="+myDevice+"&window="+timeWindow,
+				url: app_domain+"development/device/data?identifier="+myDevice2+"&window="+timeWindow,
 				type: "GET",
 				dataType: "json",
 				success: onDataReceived,
