@@ -1,4 +1,4 @@
-$(function() {
+
 	if($("#sleeperDiv3").text.length != 0){
 		//REPLACE DEVICE UNIQUE IDENTIFIER / SERIAL NUMBER HERE
 		var myDevice3 = 'B4:21:8A:F0:70:91';//var myDevice3 = 'B4:21:8A:F0:2E:CE'; //default unique device identifier  B4:21:8A:F0:36:58
@@ -198,4 +198,3 @@ $(function() {
 			}	
 		});
 	}
-});
