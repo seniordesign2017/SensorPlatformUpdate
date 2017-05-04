@@ -184,14 +184,14 @@ $(function() {
 	function updateValues(){
         document.getElementById("graphButton").addEventListener("click", addGraph);
         if($("#sleeperDiv2").text().length !=0){
-            $('#remove2').addEventListener('click', function() {
+            $('#remove2').click( function() {
 				removeGraph2();
 			});
             //document.getElementById("remove2").addEventListener("click", removeGraph2);
         }
         if($("#sleeperDiv3").text().length !=0){
             //document.getElementById("remove3").addEventListener("click", removeGraph3);
-            $('#remove3').addEventListener('click', function() {
+            $('#remove3').click( function() {
                 removeGraph3();
             });
         }
