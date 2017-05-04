@@ -1,5 +1,48 @@
 $(function() {
 	if($("#sleeperDiv2").text.length != 0){
+		//REPLACE DEVICE UNIQUE IDENTIFIER / SERIAL NUMBER HERE
+		var myDevice = 'B4:21:8A:F0:70:91';//var myDevice = 'B4:21:8A:F0:2E:CE'; //default unique device identifier  B4:21:8A:F0:36:58
+		//REPLACE WITH FULL APP DOMAIN IF RUNNING LOCALLY, OTHEWISE LEAVE AS "/"
+		var app_domain = '/';
+		var data = [];
+		var graphPick="all";
+		var updateInterval = 1000; //milliseconds
+		var timeWindow = 10; //minutes
+		var red_color = '#6B0023';
+		var graphType = "temper";
+		var graphIndex = 0;
+		var index = 1;
+		
+		var graph_options = {
+			series: {
+				lines: { show: true, lineWidth: 1.5, fill: 0.1},
+				points: { show: true, radius: 0.7, fillColor: "#41C4DC" }
+			},
+			legend: {
+				position: "sw",
+				backgroundColor: "#111111",
+				backgroundOpacity: 0.8
+			},
+			yaxis: {
+				min: 0,
+				max: 400
+			},
+			xaxis: {
+				mode: "time",
+				timeformat: "%I:%M %p",
+				timezone:  "browser",
+				ticks: 10
+			},
+			colors: ["#2C9DB6","#FF921E","#FF5847","#FFC647", "#5D409C", "#BF427B","#D5E04D" ]
+		};
+
+		$("#specificdevice2").text(myDevice2);
+		$("#currentdevice2").text(myDevice2);
+		$("#appstatus2").text('Running');
+		$("#appstatus2").css('color', '555555');
+		$("#appconsole2").text('starting...');
+		$("#appconsole2").css('color', '#555555');
+		$("#placeholder2").text('Graph: Retrieving Data Now....');
 		function fetchData() {
 			
 			console.log('fetching data from Murano');
@@ -134,5 +177,26 @@ $(function() {
 			});
 
 		}
+	
+		$("#graphPick2").val(graphPick).change(function () {
+			selectedValue = $("#graphPick2").val();
+			if (selectedValue == "temperature"){
+				graphType = "temper";
+			}else if(selectedValue == "all"){
+				graphType = "all";
+			}else if(selectedValue == "pressure"){
+				graphType = "press";
+			}else if(selectedValue == "flow"){
+				graphType = "flow";
+			}else if(selectedValue == "humidity"){
+				graphType = "humid"
+			}else if(selectedValue == "pressure2"){
+				graphType="press2";
+			}else if(selectedValue == "atmoPressure"){
+				graphType="bpress";
+			}else if(selectedValue == "current"){
+				graphType="curr";
+			}	
+		});
 	}
 });
