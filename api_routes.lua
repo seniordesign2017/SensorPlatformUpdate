@@ -31,35 +31,37 @@ else
   return 'Getting Key Value Raw Data for: Device Identifier: '..identifier..'\r\n'..to_json(resp)
 end
 
---#ENDPOINT GET /development/storage/getJsonData
 -- Description: Show current key-value data for a specific unique device or for full solution
 -- Parameters: ?device=<uniqueidentifier>
 local identifier = tostring(request.parameters.identifier)
-
-if identifier == 'all' or identifier == "nil" then
-  local response_text = 'Getting Key Value Raw Data for:\r\n'
-  local resp = Keystore.list()
-  --response_text = response_text..'Solution Keys\r\n'..to_json(resp)..'\r\n'
-  if resp['keys'] ~= nil then
-    local num_keys = #resp['keys']
-    local n = 1 --remember Lua Tables start at 1.
-    while n <= num_keys do
-      local id = resp['keys'][n]
-      local response = Keystore.get({key = id})
-      response_text = response_text..id..'\r\n'
-      --response_text = response_text..'Data: '..to_json(response['value'])..'\r\n'
-      -- print out each value on new line
-      for key,val in pairs(from_json(response['value'])) do
-        response_text = response_text.. '   '..key..':'.. val ..'\r\n'
-      end
-      n = n + 1
-    end
-  end
-  return response_text
-else
-  local resp = Keystore.get({key = "identifier_" .. identifier})
-  return 'Getting Key Value Raw Data for: Device Identifier: '..identifier..'\r\n'..to_json(resp)
+local vars = util.get_device_aliases()
+local vals = util.get_device_aliases()
+local x = #vars
+i = 1
+local resp = Keystore.get({key = "identifier_" .. identifier})
+local aliases = {}
+vars = from_json(resp.value)
+for key,val in pairs(vars) do
+  table.insert(aliases,key)
 end
+
+local function contains(table, val)
+  for i=1,#table do
+      if table[i] == val then 
+        return true
+      end
+  end
+  return false
+end
+
+local final = {}
+for x,y in ipairs(vals) do
+  if contains(aliases,y) then
+    final[y] = vars[y]
+  end
+end
+final["timestamp"] = vars["timestamp"]
+return final
 
 --#ENDPOINT GET /development/device/data
 -- Description: Get timeseries data for specific device
