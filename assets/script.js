@@ -110,7 +110,9 @@ $(function() {
 						}
 					}
 					var currVal = data[data.length-1];
-					changeCurrentValue(currVal[1],friendly);
+					if(currVal[1] != null){
+						changeCurrentValue(currVal[1],friendly);
+					}
 					// only push if data returned
 					if(graphType == "all"||(graphType=="temper" && friendly == "Pump Temperature")||(graphType=="press" && friendly == "Pressure")||(graphType == "flow"&& friendly == "Flow")||(graphType=="press2" && friendly == "Pressure2")||(graphType=="bpress" && friendly == "Barometric Pressure")||(graphType=="curr" && friendly == "Current")||(graphType=="humid" && friendly == "Humidity")){
 						
