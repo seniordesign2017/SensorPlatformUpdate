@@ -114,7 +114,7 @@ $(function(){
 					}
 					
 					// only push if data returned
-					if(graphType3 == "all"||(graphType3=="temper" && friendly == "Pump Temperature")||(graphType3=="press" && friendly == "Pressure")||(graphType3 == "flow"&& friendly == "Flow")(graphType3=="press2" && friendly == "Pressure2")||(graphType3=="bpress" && friendly == "Barometric Pressure")||(graphType3=="curr" && friendly == "Current")||(graphType3=="humid" && friendly == "Humidity")){
+					if(graphType3 == "all"||(graphType3=="temper" && friendly == "Pump Temperature")||(graphType3=="press" && friendly == "Pressure")||(graphType3 == "flow"&& friendly == "Flow")||(graphType3=="press2" && friendly == "Pressure2")||(graphType3=="bpress" && friendly == "Barometric Pressure")||(graphType3=="curr" && friendly == "Current")||(graphType3=="humid" && friendly == "Humidity")){
 						
 						if (data.length > 0) {
 							last_val = data[data.length-1];
