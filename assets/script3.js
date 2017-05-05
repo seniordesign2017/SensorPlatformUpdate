@@ -125,7 +125,6 @@ $(function(){
 								units: units
 							});
 							
-							changeCurrentValue(last_val[1],friendly);
 							
 						}
 					}
