@@ -6,7 +6,7 @@ $(function() {
 	var data = [];
 	var graphPick="all";
 	var updateInterval = 1000; //milliseconds
-	var timeWindow = 10; //minutes
+	var timeWindow = 1; //minutes
 	var red_color = '#6B0023';
 	var graphType = "all";
 	var graphIndex = 0;

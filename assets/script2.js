@@ -6,7 +6,7 @@ $(function(){
 	var data = [];
 	var graphPick2="all";
 	var updateInterval2 = 1000; //milliseconds
-	var timeWindow2 = 10; //minutes
+	var timeWindow2 = 1; //minutes
 	var red_color = '#6B0023';
 	var graphType = "all";
 	var graphIndex = 0;
@@ -218,13 +218,13 @@ $(function(){
 		}
 	});
 	//change specific device to current device
-	$("#specificdevice2").val(myDevice).change(function () {
+	$("#specificdevice2").val(myDevice2).change(function () {
 		var v = $(this).val();
 		if (v) {
-			myDevice = v;
-			console.log('new device identity:' + myDevice);
-			$(this).val("" + myDevice);
-			$("#currentdevice2").text(myDevice);
+			myDevice2 = v;
+			console.log('new device identity:' + myDevice2);
+			$(this).val("" + myDevice2);
+			$("#currentdevice2").text(myDevice2);
 			$("#placeholder2").text('Graph: Retrieving New Device Data Now....');
 		}
 	});
