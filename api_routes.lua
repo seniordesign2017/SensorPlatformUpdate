@@ -4,7 +4,7 @@ return 'Hello World! \r\nI am a test Murano Solution API Route entpoint'
 --#ENDPOINT GET /development/storage/keyvalue
 -- Description: Show current key-value data for a specific unique device or for full solution
 -- Parameters: ?device=<uniqueidentifier>
-local identifier = tostring(request.parameters.device)
+local identifier = tostring(request.parameters.identifier)
 
 if identifier == 'all' or identifier == "nil" then
   local response_text = 'Getting Key Value Raw Data for: Full Solution: \r\n'
