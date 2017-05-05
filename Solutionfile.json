@@ -3,7 +3,7 @@
   "file_dir": "assets",
   "custom_api": "api_routes.lua",
   "modules": {
-    "auth": "modules/util.lua"
+    "util": "modules/util.lua"
   },
   "event_handler": {
     "device": {
