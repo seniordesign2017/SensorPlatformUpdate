@@ -109,7 +109,8 @@ $(function() {
 							data.unshift([raw_data[i][0],raw_data[i][j]]);
 						}
 					}
-					
+					var currVal = data[data.length-1];
+					changeCurrentValue(currVal[1],friendly);
 					// only push if data returned
 					if(graphType == "all"||(graphType=="temper" && friendly == "Pump Temperature")||(graphType=="press" && friendly == "Pressure")||(graphType == "flow"&& friendly == "Flow")||(graphType=="press2" && friendly == "Pressure2")||(graphType=="bpress" && friendly == "Barometric Pressure")||(graphType=="curr" && friendly == "Current")||(graphType=="humid" && friendly == "Humidity")){
 						
@@ -122,7 +123,7 @@ $(function() {
 								units: units
 							});
 							
-							changeCurrentValue(last_val[1],friendly);
+							//changeCurrentValue(last_val[1],friendly);
 							
 						}
 					}
