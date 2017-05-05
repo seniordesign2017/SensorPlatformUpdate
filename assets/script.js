@@ -39,7 +39,6 @@ $(function() {
 	$("#placeholder").text('Graph: Retrieving Data Now....');
 
     function fetchData() {
-        updateValues();
 		
 		console.log('fetching data from Murano');
 
