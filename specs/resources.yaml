@@ -12,9 +12,3 @@ resources:
   format: float
 - alias: humidity
   format: float
-- alias: current
-  format: float
-- alias: uptime
-  format: integer
-- alias: atmoPressure
-  format: float
