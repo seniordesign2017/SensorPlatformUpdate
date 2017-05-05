@@ -8,7 +8,7 @@ $(function(){
 	var updateInterval2 = 1000; //milliseconds
 	var timeWindow2 = 1; //minutes
 	var red_color = '#6B0023';
-	var graphType = "all";
+	var graphType2 = "all";
 	var graphIndex = 0;
 	var index = 1;
 
@@ -171,15 +171,15 @@ $(function(){
 	$("#graphPick2").val(graphPick2).change(function () {
 		selectedValue = $("#graphPick2").val();
 		if (selectedValue == "temperature"){
-			graphType = "temper";
+			graphType2 = "temper";
 		}else if(selectedValue == "all"){
-			graphType = "all";
+			graphType2 = "all";
 		}else if(selectedValue == "pressure"){
-			graphType = "press";
+			graphType2 = "press";
 		}else if(selectedValue == "flow"){
-			graphType = "flow";
+			graphType2 = "flow";
 		}else if(selectedValue == "humidity"){
-			graphType = "humid"
+			graphType2 = "humid"
 		}else if(selectedValue == "pressure2"){
 			graphType="press2";
 		}else if(selectedValue == "atmoPressure"){
