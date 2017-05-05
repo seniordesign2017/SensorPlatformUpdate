@@ -121,10 +121,11 @@ $(function() {
 								data: data,
 								units: units
 							});
-								changeCurrentValue(last_val[1],friendly);
+							
+							changeCurrentValue(last_val[1],friendly);
+							
 						}
 					}
-				
 				}
 				$("#placeholder").text('');
 				$.plot("#placeholder", data_to_plot, graph_options);
