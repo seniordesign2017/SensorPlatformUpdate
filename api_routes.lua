@@ -7,7 +7,7 @@ return 'Hello World! \r\nI am a test Murano Solution API Route entpoint'
 local identifier = tostring(request.parameters.identifier)
 
 if identifier == 'all' or identifier == "nil" then
-  local response_text = 'Getting Key Value Raw Data for: Full Solution: \r\n'
+  local response_text = 'Getting Key Value Raw Data for:\r\n'
   local resp = Keystore.list()
   --response_text = response_text..'Solution Keys\r\n'..to_json(resp)..'\r\n'
   if resp['keys'] ~= nil then
