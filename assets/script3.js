@@ -22,10 +22,6 @@ $(function(){
 			backgroundColor: "#111111",
 			backgroundOpacity: 0.8
 		},
-		yaxis: {
-			min: 0,
-			max: 400
-		},
 		xaxis: {
 			mode: "time",
 			timeformat: "%I:%M %p",

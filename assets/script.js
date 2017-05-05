@@ -31,7 +31,6 @@ $(function() {
         colors: ["#2C9DB6","#FF921E","#FF5847","#FFC647", "#5D409C", "#BF427B","#D5E04D" ]
 	};
 
-	//$("#graphPick").val( "temper" );
 	$("#specificdevice").text(myDevice);
 	$("#currentdevice").text(myDevice);
 	$("#appstatus").text('Running');
