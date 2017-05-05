@@ -178,13 +178,13 @@ $(function(){
 		}else if(selectedValue == "flow"){
 			graphType2 = "flow";
 		}else if(selectedValue == "humidity"){
-			graphType2 = "humid"
+			graphType2 = "humid";
 		}else if(selectedValue == "pressure2"){
-			graphType="press2";
+			graphType2 ="press2";
 		}else if(selectedValue == "atmoPressure"){
-			graphType="bpress";
+			graphType2 ="bpress";
 		}else if(selectedValue == "current"){
-			graphType="curr";
+			graphType2 ="curr";
 		}	
 	});
 	// Set up the control widget
