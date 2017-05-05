@@ -31,6 +31,7 @@ else
   return 'Getting Key Value Raw Data for: Device Identifier: '..identifier..'\r\n'..to_json(resp)
 end
 
+--#ENDPOINT GET /development/storage/getJsonData
 -- Description: Show current key-value data for a specific unique device or for full solution
 -- Parameters: ?device=<uniqueidentifier>
 local identifier = tostring(request.parameters.identifier)
