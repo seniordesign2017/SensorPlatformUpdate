@@ -5,8 +5,8 @@ $(function(){
 	var app_domain = '/';
 	var data = [];
 	var graphPick2="all";
-	var updateInterval = 1000; //milliseconds
-	var timeWindow = 10; //minutes
+	var updateInterval2 = 1000; //milliseconds
+	var timeWindow2 = 10; //minutes
 	var red_color = '#6B0023';
 	var graphType = "all";
 	var graphIndex = 0;
@@ -135,8 +135,8 @@ $(function(){
 			
 			}
 			
-			if (updateInterval != 0){
-				setTimeout(fetchData, updateInterval);
+			if (updateInterval2 != 0){
+				setTimeout(fetchData, updateInterval2);
 			}
 		}
 
@@ -144,13 +144,13 @@ $(function(){
 			console.log('error: ' + textStatus + ',' + errorThrown);
 			$("#appstatus2").text('Server Offline');
 			$("#appstatus2").css('color', red_color);
-			if (updateInterval != 0){
-				setTimeout(fetchData, updateInterval+3000);
+			if (updateInterval2 != 0){
+				setTimeout(fetchData, updateInterval2+3000);
 			}
 		}
 
 		$.ajax({
-			url: app_domain+"development/device/data?identifier="+myDevice2+"&window="+timeWindow,
+			url: app_domain+"development/device/data?identifier="+myDevice2+"&window="+timeWindow2,
 			type: "GET",
 			dataType: "json",
 			success: onDataReceived,
@@ -188,4 +188,46 @@ $(function(){
 			graphType="curr";
 		}	
 	});
+	// Set up the control widget
+	// get update interval from html
+	$("#updateInterval2").val(updateInterval2).change(function () {
+		var v = $(this).val();
+		if (v && !isNaN(+v)) {
+			if(updateInterval2 == 0){
+				setTimeout(fetchData, 1000);
+				} //updates were turned off, start again
+			updateInterval2 = +v;
+			if (updateInterval2 > 20000) {
+				updateInterval2 = 20000;
+			}
+			$(this).val("" + updateInterval2);
+
+		}
+	});
+	//get timewindow from html
+	$("#timeWindow2").val(timeWindow2).change(function () {
+		var v = $(this).val();
+		if (v && !isNaN(+v)) {
+			timeWindow2 = +v;
+			if (timeWindow2 < 1) {
+				timeWindow2 = 1;
+			} else if (timeWindow2 > 360) {
+				timeWindow2 = 360;
+			}
+			$(this).val("" + timeWindow2);
+		}
+	});
+	//change specific device to current device
+	$("#specificdevice2").val(myDevice).change(function () {
+		var v = $(this).val();
+		if (v) {
+			myDevice = v;
+			console.log('new device identity:' + myDevice);
+			$(this).val("" + myDevice);
+			$("#currentdevice2").text(myDevice);
+			$("#placeholder2").text('Graph: Retrieving New Device Data Now....');
+		}
+	});
+
+	fetchData();
 });
