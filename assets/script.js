@@ -11,6 +11,8 @@ $(function() {
 	var graphType = "temper";
 	var graphIndex = 0;
 	var index = 1;
+	$("#sleeperDiv2").style.visibility = "hidden";
+	$("#sleeperDiv3").style.visibility = "hidden";
     
     var graph_options = {
         series: {
@@ -183,18 +185,20 @@ $(function() {
 
 	function updateValues(){
         document.getElementById("graphButton").addEventListener("click", addGraph);
-        if($("#sleeperDiv2").text().length !=0){
-            $('#remove2').click( function() {
-				removeGraph2();
-			});
-            //document.getElementById("remove2").addEventListener("click", removeGraph2);
-        }
-        if($("#sleeperDiv3").text().length !=0){
-            //document.getElementById("remove3").addEventListener("click", removeGraph3);
-            $('#remove3').click( function() {
-                removeGraph3();
-            });
-        }
+       
+		$('#remove2').click( function() {
+			$("#sleeperDiv2").style.visibility = "hidden"
+			index = 1;
+		});
+        
+		$('#remove3').click( function() {
+			$("#sleeperDiv3").style.visibility = "hidden";
+			index = 2;
+			if($("#sleeperDiv2").style.visibility == "hidden"){
+				index = 1;
+			}
+		});
+        
     }
     
 	function changeCurrentValue(valueChange, valueColumn){
@@ -228,29 +232,10 @@ $(function() {
 			alert("Only 3 graphs allowed");
 		}else{
 			index++;
-			document.getElementById('sleeperDiv'+index).innerHTML = '<div class="contentDiv"><div id="main" class="graphContainer"><div class="inline"><h3 >Device Identifier: <span id="currentdevice'+ index + '"><div><button id="remove'+ index +'">Remove Graph</button></div></span></h3><section class="demo-container"><div id="placeholder' + index +'" class="demo-placeholder"></div></section><div><table width="33%"><col width="200px"><col width="500px"><tr><td><p>Device Identifer: </p> </td><td><p><input id="specificdevice'+ index +'" type="text" value="" style="text-align: right; width:10em"></input><p></td> </tr> <tr><td><p>Sensor: </p></td><td><select id="graphPick' + index + '"><option selected value="all">all sensors</option><option value="temperature">Temperature</option><option value="flow">Flow</option><option value="pressure">Pressure</option><option value="pressure2">Pressure2</option><option value="atmoPressure">Pressure</option><option value="humidity">Humidity</option><option value="current">Current</option></select></td> <tr><td><p>Time between updates:</p></td><td><p><input id="updateInterval'+ index +'" type="text" value="" style="text-align: right; width:10em"></input> milliseconds [0 = stop]</p></td> </tr> <tr><td><p>Time Window:</p></td><td><p><input id="timeWindow' + index +'" type="text" value="" style="text-align: right; width:10em"></input> minutes</p></td> </tr> <tr><td><p>Application Status: </p></td><td><span id="appstatus' + index +'"> </span></td> </tr> <tr><td><p>Application Console:</td><td> <span id="appconsole'+ index +'"> </span></p></td></tr></table></div></div></div></div>';
-			if($("#sleeperDiv3").text().length != 0){
-				index = 3;
-			}
-		}
-		
-	}
-	
-	function removeGraph2(){
-		alert("check");
-		$("#sleeperDiv2").innerHTML = "";
-		index = 1;
-	}
-	function removeGraph3(){
-		alert("check2");
-		$("#sleeperDiv3").innerHTML = "";
-		index = 2;
-		if($("#sleeperDiv2").text().length == 0){
-			index = 1;
+			$("#sleeperDiv" + index).style.visibility = "visiblie";
+			
 		}
 	}
-	
-	
 	
 	$("#graphPick").val(graphPick).change(function () {
 		selectedValue = $("#graphPick").val();
