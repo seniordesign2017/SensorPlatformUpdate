@@ -23,11 +23,9 @@ local value = {
   flow = "undefined",
   pressure = "undefined",
   state = "undefined",
-  humdiity = "undefined",
+  humidity = "undefined",
   pressure2 = "undefined",
-  atmoPressure = "undefined",
-  pumpTemperature = "undefined",
-  current = "undefined"
+  pumpTemperature = "undefined"
 }
 if type(resp) == "table" and type(resp.value) == "string" then
   value = from_json(resp.value) -- Decode from JSON to Lua Table
