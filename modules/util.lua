@@ -53,7 +53,7 @@ end
 -- parm_name is 'sn', parm_value is the ID
 util.kv_read = function (sn)
   local resp = Keystore.get({key = util.DATA_PREFIX .. sn})
-  local device = nil
+  local device = util.kv_read(sn)
   if type(resp) == "table" and type(resp.value) == "string" then
     -- device was written, return the latest values
     device = from_json(resp.value)
