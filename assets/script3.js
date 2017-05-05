@@ -38,7 +38,7 @@ $(function(){
 	$("#specificdevice3").text(myDevice3);
 	$("#currentdevice3").text(myDevice3);
 	$("#appstatus3").text('Running');
-	$("#appstatus3").css('color', '555555');
+	$("#appstatus3").css('color', 'e8ddd0');
 	$("#placeholder3").text('Graph: Retrieving Data Now....');
 	function fetchData() {
 		
@@ -48,7 +48,7 @@ $(function(){
 		// recent data is grabbed as newdata
 		function onDataReceived(newdata) {
 			$("#appstatus3").text('Running');
-			$("#appstatus3").css('color', '555555');
+			$("#appstatus3").css('color', 'e8ddd0');
 			var data_to_plot = [];
 			//Load all the data in one pass; if we only got partial
 			// data we could merge it with what we already have.

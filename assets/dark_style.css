@@ -1,37 +1,36 @@
 * {	padding: 0; margin: 0; vertical-align: top; }
 
 body {
-	background: #222736;
+	background: #b4b4b4;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 	/*font: 18px/1.5em "proxima-nova", Helvetica, Arial, sans-serif;*/
-	color: #FFFFFF;
+	color: #000000;
 }
 
 a {	color: #069; }
 a:hover { color: #28b; }
 
 
-section{
-	padding: 5px
-	background-color: #1EACFF;
-	width:30%;
-}
+
 
 table{
-	border: 1px solid white;
-	border-spacing:0px;
-	width: 100%;
-
+	border-spacing:0;
+	align:center;
+	border:1px solid white;
+	margin:auto;
 }
 
+th{
+	background-color:b2d0aa;
+}
 tr td{
-    background-color: #082759;
+    background-color: #b2bfaa;
 }
 
 tr:nth-child(even) td:nth-child(odd), 
 tr:nth-child(odd) td:nth-child(even){
-    background-color: #2A4F89;
+    background-color: #d8ddd4;
 }
 
 h2 {
@@ -39,7 +38,7 @@ h2 {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 	/*font: normal 32px "omnes-pro", Helvetica, Arial, sans-serif;*/
-	color: #FFFFFF;
+	color: #000000;
 	align: center;
 }
 
@@ -48,25 +47,20 @@ h3 {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 	/*font: normal 26px "omnes-pro", Helvetica, Arial, sans-serif;*/
-	color: #FFFFFF;
+	color: #fffee0;
 }
 
 p {
 	/*margin-top: 10px;*/
-	color: #FFFFFF
+	color: #000000
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 }
 
-button {
-	font-size: 18px;
-	padding: 1px 7px;
-}
-
 input {
 	font-size: 15px;
-	background-color: black;
-	color: #FF921E;
+	background-color: #e9e9e9;
+	color: #000;
 	font-weight: 300;
 	font-family: 'Source Sans Pro', sans-serif;
 	border-color:#555555;
@@ -78,25 +72,26 @@ input[type=checkbox] {
 	margin: 7px;
 }
 
-.flex-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
 .contentDiv{
-	align:left;
-	width:700px;
-	border: 1px solid white;
 	float:left;
+	align:center;
+	width:500px;
 }
 
 .valueContainer{
-	width: 1080px;
+	width: 900px;
+
+}
+.textValue{
+	width:75%;
+	margin:auto;
+	text-align:center;
 }
 
 .graphContainer{
-	align:left;
+	float:left;
+	background-color:#146802;
+	border-radius:10px;
 }
 
 
@@ -107,12 +102,13 @@ input[type=checkbox] {
 }
 
 #header h2 {
-	margin-left: 15px;
+
+	
 	vertical-align: middle;
 	font-size: 42px;
-	font-weight: 300;
-	text-decoration: none;
-	color: #41C4DC;
+	font-weight: 700;
+
+	color: #eadb6b;
 }
 
 #content {
@@ -158,12 +154,12 @@ input[type=checkbox] {
 	height: 100%;
 	font-size: 14px;
 	line-height: 1.2em;
-	background-color:#1EACFF;
+	background-color:#FFFFFF;
 }
 
 .legend table {
 	border-spacing: 5px;
-	color: #FFFFFF!important;
+	color: #000000!important;
 }
 
 .flot-tick-label {
