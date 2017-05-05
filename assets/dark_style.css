@@ -67,6 +67,9 @@ input {
 	border-width:1px;
 	border-style:ridge;
 }
+.ultraMega{
+	margin:auto;
+}
 
 input[type=checkbox] {
 	margin: 7px;
