@@ -8,7 +8,7 @@ $(function(){
 	var updateInterval = 1000; //milliseconds
 	var timeWindow = 10; //minutes
 	var red_color = '#6B0023';
-	var graphType = "temper";
+	var graphType = "all";
 	var graphIndex = 0;
 	var index = 1;
 
@@ -39,21 +39,16 @@ $(function(){
 	$("#currentdevice2").text(myDevice2);
 	$("#appstatus2").text('Running');
 	$("#appstatus2").css('color', '555555');
-	$("#appconsole2").text('starting...');
-	$("#appconsole2").css('color', '#555555');
 	$("#placeholder2").text('Graph: Retrieving Data Now....');
 	function fetchData() {
 		
 		console.log('fetching data from Murano');
-		$("#appconsole2").text('Fetching Data For '+myDevice2+' From Server...');
-		$("#appconsole2").css('color', '#555555');
+
 
 		// recent data is grabbed as newdata
 		function onDataReceived(newdata) {
 			$("#appstatus2").text('Running');
 			$("#appstatus2").css('color', '555555');
-			$("#appconsole2").text('Processing Data');
-			$("#appconsole2").css('color', '#555555');
 			var data_to_plot = [];
 			//Load all the data in one pass; if we only got partial
 			// data we could merge it with what we already have.
@@ -65,7 +60,6 @@ $(function(){
 			//newdata has no data
 			//Database error
 			console.log('no data in selected window, check device')
-			$("#appconsole2").text('No data found in window for this device');
 			$("#placeholder2").text('Graph: Data Not Found for: '+myDevice2);
 			}else{
 				//newdata has data
@@ -138,8 +132,6 @@ $(function(){
 				}
 				$("#placeholder2").text('');
 				$.plot("#placeholder2", data_to_plot, graph_options);
-				$("#appconsole2").text('Data Plotted');
-				$("#appconsole2").css('color', '#555555');
 			
 			}
 			
@@ -150,7 +142,6 @@ $(function(){
 
 		function onError( jqXHR, textStatus, errorThrown) {
 			console.log('error: ' + textStatus + ',' + errorThrown);
-			$("#appconsole2").text('No Server Response');
 			$("#appstatus2").text('Server Offline');
 			$("#appstatus2").css('color', red_color);
 			if (updateInterval != 0){

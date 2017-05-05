@@ -8,11 +8,9 @@ $(function() {
 	var updateInterval = 1000; //milliseconds
 	var timeWindow = 10; //minutes
 	var red_color = '#6B0023';
-	var graphType = "temper";
+	var graphType = "all";
 	var graphIndex = 0;
 	var index = 1;
-	document.getElementById("sleeperDiv2").style.visibility = "hidden";
-	document.getElementById("sleeperDiv3").style.visibility = "hidden";
     
     var graph_options = {
         series: {
@@ -24,10 +22,6 @@ $(function() {
 			backgroundColor: "#111111",
 			backgroundOpacity: 0.8
 		},
-        yaxis: {
-			min: 0,
-			max: 400
-        },
         xaxis: {
 			mode: "time",
 			timeformat: "%I:%M %p",
@@ -42,23 +36,17 @@ $(function() {
 	$("#currentdevice").text(myDevice);
 	$("#appstatus").text('Running');
 	$("#appstatus").css('color', '555555');
-	$("#appconsole").text('starting...');
-	$("#appconsole").css('color', '#555555');
 	$("#placeholder").text('Graph: Retrieving Data Now....');
 
     function fetchData() {
         updateValues();
 		
 		console.log('fetching data from Murano');
-        $("#appconsole").text('Fetching Data For '+myDevice+' From Server...');
-		$("#appconsole").css('color', '#555555');
 
         // recent data is grabbed as newdata
         function onDataReceived(newdata) {
 			$("#appstatus").text('Running');
 			$("#appstatus").css('color', '555555');
-			$("#appconsole").text('Processing Data');
-			$("#appconsole").css('color', '#555555');
 			var data_to_plot = [];
 			//Load all the data in one pass; if we only got partial
 			// data we could merge it with what we already have.
@@ -70,7 +58,6 @@ $(function() {
             //newdata has no data
             //Database error
             console.log('no data in selected window, check device')
-            $("#appconsole").text('No data found in window for this device');
             $("#placeholder").text('Graph: Data Not Found for: '+myDevice);
 			}else{
 				//newdata has data
@@ -144,8 +131,6 @@ $(function() {
 				}
 				$("#placeholder").text('');
 				$.plot("#placeholder", data_to_plot, graph_options);
-				$("#appconsole").text('Data Plotted');
-				$("#appconsole").css('color', '#555555');
 			
 			}
 			
@@ -156,7 +141,6 @@ $(function() {
 
         function onError( jqXHR, textStatus, errorThrown) {
 			console.log('error: ' + textStatus + ',' + errorThrown);
-			$("#appconsole").text('No Server Response');
 			$("#appstatus").text('Server Offline');
 			$("#appstatus").css('color', red_color);
 			if (updateInterval != 0){
@@ -182,60 +166,33 @@ $(function() {
         });
 
 	}
-
-	function updateValues(){
-        document.getElementById("graphButton").addEventListener("click", addGraph);
-       
-		$('#remove2').click( function() {
-			document.getElementById("sleeperDiv2").style.visibility = "hidden"
-			index = 1;
-		});
-        
-		$('#remove3').click( function() {
-			document.getElementById("sleeperDiv3").style.visibility = "hidden";
-			index = 2;
-			if(document.getElementById("sleeperDiv2").style.visibility == "hidden"){
-				index = 1;
-			}
-		});
-        
-    }
     
 	function changeCurrentValue(valueChange, valueColumn){
 		
 		if (valueColumn == "Pump Temperature"){
-			$("#currTemp").innerHTML= valueChange;
+			document.getElementById("currTemp").innerHTML= valueChange;
 			
 		}else if(valueColumn == "Pressure"){
-			$("#currPres").innerHTML= valueChange;
+			document.getElementById("currPres").innerHTML= valueChange;
 			
 		}else if(valueColumn == "Flow"){
-			$("#currFlow").innerHTML= valueChange;
+			document.getElementById("currFlow").innerHTML= valueChange;
 		}
 		else if(valueColumn == "Pressure2"){
-			$("#currPres2").innerHTML= valueChange;
+			document.getElementById("currPres2").innerHTML= valueChange;
 			
 		}else if(valueColumn == "Humidity"){
-			$("#currHumid").innerHTML= valueChange;
+			document.getElementById("currHumid").innerHTML= valueChange;
 			
 		}else if(valueColumn == "Current"){
-			$("#currCurr").innerHTML= valueChange;
+			document.getElementById("currCurr").innerHTML= valueChange;
 			
 		}else if(valueColumn == "Barometric Pressure"){
-			$("#currApres").innerHTML= valueChange;
+			document.getElementById("currApres").innerHTML= valueChange;
 			
 		}
 	}
 	
-	function addGraph(){
-		if(index >= 3){
-			alert("Only 3 graphs allowed");
-		}else{
-			index++;
-			document.getElementById("sleeperDiv"+index).style.visibility = "visiblie";
-			
-		}
-	}
 	
 	$("#graphPick").val(graphPick).change(function () {
 		selectedValue = $("#graphPick").val();
