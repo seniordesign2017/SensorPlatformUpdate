@@ -11,8 +11,8 @@ $(function() {
 	var graphType = "temper";
 	var graphIndex = 0;
 	var index = 1;
-	$("#sleeperDiv2").style.visibility = "hidden";
-	$("#sleeperDiv3").style.visibility = "hidden";
+	document.getElementById("sleeperDiv2").style.visibility = "hidden";
+	document.getElementById("sleeperDiv3").style.visibility = "hidden";
     
     var graph_options = {
         series: {
@@ -187,14 +187,14 @@ $(function() {
         document.getElementById("graphButton").addEventListener("click", addGraph);
        
 		$('#remove2').click( function() {
-			$("#sleeperDiv2").style.visibility = "hidden"
+			document.getElementById("sleeperDiv2").style.visibility = "hidden"
 			index = 1;
 		});
         
 		$('#remove3').click( function() {
-			$("#sleeperDiv3").style.visibility = "hidden";
+			document.getElementById("sleeperDiv3").style.visibility = "hidden";
 			index = 2;
-			if($("#sleeperDiv2").style.visibility == "hidden"){
+			if(document.getElementById("sleeperDiv2").style.visibility == "hidden"){
 				index = 1;
 			}
 		});
@@ -232,7 +232,7 @@ $(function() {
 			alert("Only 3 graphs allowed");
 		}else{
 			index++;
-			$("#sleeperDiv" + index).style.visibility = "visiblie";
+			document.getElementById("sleeperDiv"+index).style.visibility = "visiblie";
 			
 		}
 	}
